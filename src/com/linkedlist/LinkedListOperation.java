@@ -2,12 +2,12 @@ package com.linkedlist;
 
 public class LinkedListOperation {
 
-	// Represent the head and tail of the singly linked list
 	INode head;
 	INode tail;
 	int size;
 
-	public void addNodeInBeginnig(Node newNode) {
+	public void addNodeInBeginnig(INode newNode) {
+
 		if (head == null) {
 			head = newNode;
 			tail = newNode;
@@ -16,6 +16,7 @@ public class LinkedListOperation {
 			head = newNode;
 			head.setNext(temp);
 		}
+		size++;
 	}
 
 	public void addNodeAtEnd(Node newNode) {
@@ -29,22 +30,24 @@ public class LinkedListOperation {
 		size++;
 	}
 
-	public void addNodeInMiddle(Node newNode) {
-
-		if (head == null) {
-			head = newNode;
-			tail = newNode;
+	public void addNodeInPosition(Integer element, int position) {
+		if (position < 0 || position > size)
+			System.out.println("Index out of bound!");
+		else if (position == 1) {
+			Node newNode = new Node(element);
+			newNode.setNext(head.getNext());
+			head.setNext(newNode);
 		} else {
-			INode temp, current = null;
-			int count = (size % 2 == 0) ? (size / 2) : ((size + 1) / 2);
-			temp = head;
-			// current = null;
-			for (int i = 0; i < count; i++) {
-				current = temp;
-				temp = temp.getNext();
+			INode currentNode = head;
+			while (currentNode != null) {
+				if (currentNode.getKey().equals(30)) {
+					Node newNode = new Node(element);
+					newNode.setNext(currentNode.getNext());
+					currentNode.setNext(newNode);
+					break;
+				}
+				currentNode = currentNode.getNext();
 			}
-			current.setNext(newNode);
-			newNode.setNext(temp);
 		}
 		size++;
 	}
@@ -86,19 +89,23 @@ public class LinkedListOperation {
 		}
 	}
 
-	public void displayNode() {
+	public void displayNode(INode node) {
 		INode current = head;
-		if (head == null)
-			System.out.println("Linked List is empty");
-		System.out.print("Nodes are: ");
+
+		if (head == null) {
+			System.out.println("List is empty");
+			return;
+		}
+		System.out.println("Nodes of singly linked list: ");
 		while (current != null) {
 			if (current.getNext() != null) {
 				System.out.print(current.getKey() + " -> ");
 				current = current.getNext();
 			} else {
-				System.out.println(current.getKey());
-				current = current.getNext();
+				System.out.print(current.getKey());
+				break;
 			}
 		}
+		System.out.println();
 	}
 }

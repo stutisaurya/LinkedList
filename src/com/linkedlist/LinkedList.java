@@ -3,8 +3,11 @@ package com.linkedlist;
 import java.util.Scanner;
 
 public class LinkedList {
+	static Scanner input = new Scanner(System.in);
+
 	public static void main(String[] args) {
 		LinkedListOperation operation = new LinkedListOperation();
+		INode headNode = null;
 
 		Node<Integer> myFirstNode = new Node<>(56);
 		Node<Integer> mySecondNode = new Node<>(30);
@@ -23,7 +26,11 @@ public class LinkedList {
 				flag = true;
 				break;
 			case 3:
-				operation.addNodeInMiddle(mySecondNode);
+				System.out.println("Enter the data you want to add");
+				Integer element = input.nextInt();
+				System.out.println("Enter the position where you want to add the data ");
+				int position = input.nextInt();
+				operation.addNodeInPosition(element, position);
 				flag = true;
 				break;
 			case 4:
@@ -35,7 +42,7 @@ public class LinkedList {
 				flag = true;
 				break;
 			case 6:
-				operation.displayNode();
+				operation.displayNode(headNode);
 				flag = true;
 				break;
 			case 7:
@@ -50,12 +57,12 @@ public class LinkedList {
 	}
 
 	public static int inputMenu() {
-		Scanner input = new Scanner(System.in);
 
+		System.out.println();
 		System.out.println("Enter options to perform operations in Linked List");
 		System.out.println("Press 1 to Add Node in the Beginning");
 		System.out.println("Press 2 to Add Node at the End");
-		System.out.println("Press 3 to Add Node in the Middle");
+		System.out.println("Press 3 to Add Node in the Between the List");
 		System.out.println("Press 4 to Delete Node from the Beginning");
 		System.out.println("Press 5 to Delete Node from the End");
 		System.out.println("Press 6 to Display the Linked List");
