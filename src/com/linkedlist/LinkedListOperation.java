@@ -2,16 +2,27 @@ package com.linkedlist;
 
 public class LinkedListOperation {
 	// Represent the head and tail of the singly linked list
-	Node head;
-	Node tail;
+	INode head;
+	INode tail;
 	int size;
 
-	public void addNode(Node newNode) {
+	public void addNodeInBeginnig(Node newNode) {
 		if (head == null) {
 			head = newNode;
 			tail = newNode;
 		} else {
-			tail.next = newNode;
+			INode temp = head;
+			head = newNode;
+			head.setNext(temp);
+		}
+	}
+
+	public void addNodeAtEnd(Node newNode) {
+		if (head == null) {
+			head = newNode;
+			tail = newNode;
+		} else {
+			tail.setNext(newNode);
 			tail = newNode;
 		}
 		size++;
@@ -35,6 +46,13 @@ public class LinkedListOperation {
 			newNode.setNext(temp);
 		}
 		size++;
+	}
+
+	public void deleteNodeFromBeginning() {
+		if (head == null)
+			System.out.println("Linked List is empty!");
+		else
+			head = head.getNext();
 	}
 
 	public void displayNode() {
