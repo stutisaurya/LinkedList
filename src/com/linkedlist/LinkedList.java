@@ -1,8 +1,17 @@
 package com.linkedlist;
 
+/**
+ * Ability to delete 40 from the Linked List sequence of 56->30->40->70 and show the size of LinkedList is 3
+ * Search LinkedList to get Node with key value 40
+ * Delete the node
+ * Implement size() and show the Linked List size is 3
+ * Final Sequence: 56->30->70
+ */
+
 import java.util.Scanner;
 
 public class LinkedList {
+
 	static Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -42,14 +51,20 @@ public class LinkedList {
 				flag = true;
 				break;
 			case 6:
-				operation.displayNode(headNode);
+				System.out.println("Enter the data you want to delete");
+				Integer value = input.nextInt();
+				operation.deleteNodeFromPosition(value);
 				flag = true;
 				break;
 			case 7:
-				operation.searchElement();
+				operation.displayNode(headNode);
 				flag = true;
 				break;
 			case 8:
+				operation.searchElement();
+				flag = true;
+				break;
+			case 9:
 				flag = false;
 				break;
 			}
@@ -65,9 +80,10 @@ public class LinkedList {
 		System.out.println("Press 3 to Add Node in the Between the List");
 		System.out.println("Press 4 to Delete Node from the Beginning");
 		System.out.println("Press 5 to Delete Node from the End");
-		System.out.println("Press 6 to Display the Linked List");
-		System.out.println("Press 7 to Search Node in the Linked List");
-		System.out.println("Press 8 to Quit");
+		System.out.println("Press 6 to Delete Node from the Middle");
+		System.out.println("Press 7 to Display the Linked List");
+		System.out.println("Press 8 to Search Node in the Linked List");
+		System.out.println("Press 9 to Quit");
 
 		int value = input.nextInt();
 

@@ -73,6 +73,28 @@ public class LinkedListOperation {
 		size--;
 	}
 
+	public void deleteNodeFromPosition(Integer element) {
+		if (head == null)
+			System.out.println("Linked List is empty!");
+		else {
+			INode currentNode = head;
+			INode previousNode = null;
+			while (currentNode != null) {
+				if (currentNode.getKey().equals(element)) {
+					if (previousNode == null) {
+						head = currentNode.getNext();
+					} else {
+						previousNode.setNext(currentNode.getNext());
+					}
+					break;
+				}
+				previousNode = currentNode;
+				currentNode = currentNode.getNext();
+			}
+		}
+		size--;
+	}
+
 	public void searchElement() {
 		if (head == null)
 			System.out.println("Linked List is empty");
@@ -107,5 +129,6 @@ public class LinkedListOperation {
 			}
 		}
 		System.out.println();
+		System.out.println("Size of the Linked List is : " + size);
 	}
 }
